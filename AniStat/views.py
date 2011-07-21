@@ -35,19 +35,19 @@ def AnimalList(request): #all animals for teachers, own only for students
 def FormList(request): #displays all forms for teacher, own only for student
     return render_to_response("formlist.html", context_instance=RequestContext(request))
 
-def FormDetail(request): #Shows all info for form, is editable if form date is today.
+def FormDetail(request,form_id): #Shows all info for form, is editable if form date is today.
     return render_to_response("formdetail.html",context_instance=RequestContext(request))
 
-def AnimalDetail(request): #all information, most recent filled out form, form history
+def AnimalDetail(request,animal_id): #all information, most recent filled out form, form history
     return render_to_response("animaldetail.html",context_instance=RequestContext(request))
 
 def NewAnimalForm(request):#Only once a day per student per animal, creates a new form for the animal based off of the template at time 0
     return render_to_response("formdetail.html",context_instance=RequestContext(request))
 
-def StudentDetail(request): #Own only, unless teacher. 
+def StudentDetail(request,student_id): #Own only, unless teacher. 
     return render_to_response("studentdetail.html",context_instance=RequestContext(request))
 
-def NewAnimal(request): #a thickened with Javasript and madness. will be a page to create all of the things associated with an animal:
+def NewAnimal(request): #all thickened with Javasript and madness. will be a page to create all of the things associated with an animal:
     #SO new animal name, species
     return render_to_response("newanimal.html",context_instance=RequestContext(request))
 

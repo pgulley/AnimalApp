@@ -5,7 +5,16 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-     url(r'^index','AniStat.views.Index'),
+     url(r'^index$','AniStat.views.Index'),
+     url(r'^students$','AniStat.views.StudentList'),
+     url(r'^students/(?P<student_id>\d+)/$','AniStat.views.StudentDetail'),
+     url(r'^forms$','AniStat.views.FormList'),
+     url(r'^forms/(?P<form_id>\d+)/$','AniStat.views.FormDetail'),
+     url(r'^animals$','AniStat.views.AnimalList'),
+     url(r'^animals/(?P<animal_id>\d+)/$','AniStat.views.AnimalDetail'),
+     url(r'^newanimal$','AniStat.views.NewAnimal'),
+     url(r'^newanimal/submit$','AniStat.views.SubmitNewAnimal')
+     url(r'^animals/(?P<animal_id>\d+)/newform$','AniStat.views.NewAnimalForm'
 
     # Examples:
     # url(r'^$', 'AnimalApp.views.home', name='home'),
