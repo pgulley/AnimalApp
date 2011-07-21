@@ -13,8 +13,8 @@ urlpatterns = patterns('',
      url(r'^animals$','AniStat.views.AnimalList'),
      url(r'^animals/(?P<animal_id>\d+)/$','AniStat.views.AnimalDetail'),
      url(r'^newanimal$','AniStat.views.NewAnimal'),
-     url(r'^newanimal/submit$','AniStat.views.SubmitNewAnimal')
-     url(r'^animals/(?P<animal_id>\d+)/newform$','AniStat.views.NewAnimalForm'
+     url(r'^newanimal/submit$','AniStat.views.SubmitNewAnimal'),
+     url(r'^animals/(?P<animal_id>\d+)/newform$','AniStat.views.NewAnimalForm'),
 
     # Examples:
     # url(r'^$', 'AnimalApp.views.home', name='home'),

@@ -16,7 +16,7 @@ class Animal(models.Model):
     name = models.CharField(max_length=20)
     category = models.CharField(max_length=2, choices=CATEGORY_CHOICES)
     instructions = models.CharField(max_length=1000)
-    caretakers = models.ManyToManyField("Profile", null=True, blank=True)
+    caretakers = models.ManyToManyField("User", null=True, blank=True)
     formlist = models.ManyToManyField("FormDay", related_name="AniStat.FormDay", null=True, blank=True)
     def __unicode__(self):
         return "{0}: {1}".format(self.get_category_display(), self.name)
