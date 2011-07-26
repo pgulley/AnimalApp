@@ -4,11 +4,24 @@
 </head>
 <body>
 <h1>Indexy stuff</h1>
-<a href=animals>Animal List</a></br>
+{% if user.is_authenticated %}
+<a href=/logout>logout</a>
+<a href=animals>Animal List</a></br> </br>
 {% if user.get_profile.isteacher %}
 <a href=students>Student List</a> </br>
 <a href=forms>Form List</a> </br>
 <a href=newanimal>New Animal</a> </br>
+{% endif %}
+{% else %}
+You aren't logged in.</br>
+
+<form name=login action=/login method=post>
+{% csrf_token %}
+<input type=text value=username name=username></br>
+<input type=password value=password name=password> </br>
+<input type=submit value=submit></br>
+</form>
+or <a href=/newuser>Create an account</a></br>
 {% endif %}
 {% if error %}
 {{ error }}

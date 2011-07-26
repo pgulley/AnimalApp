@@ -177,3 +177,31 @@ def SubmitNewAnimal(request):#Where most of the magic of this app occurs: all of
         form.formchecks.add(formcheck)
     form.save()
     return AnimalDetail(request,animal.pk)
+
+##Auth pages
+
+def Login(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return Index(request, message="you are now logged in")
+    else:
+        return Index(request, error="Invalid Login")
+
+def Logout(request): 
+    logout(request)
+    return Index(request)
+
+def NewUser(request): 
+    return render_to_response("newuser.html", context_instance=RequestContext(request))
+
+def CreateUser(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    email = request.POST['email']
+    user = User.objects.create_user(username=username,password=password,email=email)
+    newprofile = Profile(isstudent=True, isteacher=False, user=user)
+    newprofile.save()
+    return Index(request)
