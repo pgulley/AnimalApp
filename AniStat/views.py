@@ -60,7 +60,7 @@ def FormList(request,error=False): #displays all forms for teacher, own only for
             if not form.istemplate:
                 formlist.append(form) 
     else:
-        formlist=request.user.get_profile.forms.all() 
+        formlist=request.user.get_profile().form.all() 
     return render_to_response("formlist.html",{"formlist":formlist,
                                                "error":error}, context_instance=RequestContext(request))
 @login_required
@@ -80,17 +80,31 @@ def FormDetail(request,form_id): #Shows all info for form, is editable if form d
 def AnimalDetail(request,animal_id): #all information, most recent filled out form, form history. teachers can add students here?
     animal = Animal.objects.get(pk=animal_id)
     formslist = animal.formlist.all()
-    print formslist
     if formslist:
         for form in formslist:
-            print form, form.day
             if form.day==datetime.date.today():
                firstform = form
     else: 
         firstform=False
+    studentlist = User.objects.all()
+    print animal.caretakers.all()
     #Question here: do students see all forms for the animal, or only their own? it makes a difference, here. will inquire.
-    return render_to_response("animaldetail.html",{'animal':animal,"formone":firstform,
+    return render_to_response("animaldetail.html",{'animal':animal,"formone":firstform,'students':studentlist,
                                                   },context_instance=RequestContext(request))
+@login_required
+def ConnectAnimal(request,animal_id):
+    try:
+        students = request.POST['students']
+    except KeyError:
+        return AnimalDetail(request,animal_id)
+    animal = Animal.objects.get(pk=animal_id)
+    for student in students:
+       student = User.objects.get(pk=student)
+       student.get_profile().animals.add(animal)
+       animal.caretakers.add(student.get_profile())
+       student.get_profile().save()
+    animal.save()
+    return AnimalDetail(request,animal_id)
 
 @login_required
 def NewAnimalForm(request,animal_id):#Only once per day per student per animal, creates a new form for the animal based off of the template at time 0
@@ -121,7 +135,7 @@ def NewAnimalForm(request,animal_id):#Only once per day per student per animal, 
     print newform
     animal.save()
     request.user.get_profile().form.add(newform)
-    request.user.get_profile.save()
+    request.user.get_profile().save()
     return render_to_response("formdetail.html",{'form':newform,
                                                 },context_instance=RequestContext(request))
 

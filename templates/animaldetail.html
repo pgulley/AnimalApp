@@ -1,22 +1,44 @@
-<html><head><title>Animal Detail</title></head>
+<html>
+<head>
+<title>Animal Detail</title>
+<link rel=StyleSheet href=/static/style.css type=text/css>
+</head>
 <body>
 <h1>{{ animal }} </h1>
 species: {{ animal.species }} </br>
 
 
-Most recent form: </br>
-{% if formone %}
 {% for formcheck in formone.formchecks.all %}
-{{ formcheck.name }}:{{ formcheck.isdone }}
+    {{ formcheck.name }}:{{ formcheck.isdone }}
 {% endfor %}</br>
-{% endif %}
+
 past forms: </br>
 {% if animal.formlist %}
-{% for form in animal.formlist.all %}
-<a href=/forms/{{ form.id }}>{{ form }}</a>  </br>
-{% endfor %}
-{% else %}
-no forms have been submitted yet 
+    {% for form in animal.formlist.all %}
+        <a href=/forms/{{ form.id }}>{{ form }}</a>  </br>
+    {% endfor %}
+ {% else %}
+    no forms have been submitted yet 
+{% endif %}
+</br>
+Caretakers </br>
+{% if animal.caretakers %} 
+    {% for student in animal.caretakers.all %}
+        {{ student }} </br>
+    {% endfor%}
+{% endif %}
+{% if user.get_profile.isteacher %}
+    </br>
+    Add caretakers to animal
+    <form action=connectanimal method=post>
+        {% csrf_token %}
+        <select name=students multiple="multiple">
+            {% for student in students %}
+                <option value={{ student.id }} {% if student in animal.caretakers %} selected='selected' {% endif %}>{{ student }} </option>
+            {% endfor %}
+       </select>
+       <input type=submit value=submit>
+    </form>
 {% endif %}
 </br><a href=/animals>Go Back to List</a>
 </br><a href=/index>Go Back to Index</a>

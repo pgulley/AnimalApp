@@ -1,13 +1,17 @@
 <html>
-<head><title>Student Detail</title></head>
+<head>
+<title>Student Detail</title>
+<link rel=StyleSheet href=static/style.css type=text/css>
+</head>
 <body>
-{{ student.user.username }} </br>
+{{ student.username }} </br>
 Animals: </br>
-{% for animal in student.animals %}
-<a href=/animals/{{ animal.id }}>{{ animal }}</a>
+{% for animal in student.get_profile.animals.all %}
+    <a href=/animals/{{ animal.id }}>{{ animal }}</a></br>
 {% endfor %}
-{% for form in student.forms %}
-<a href=/form/{{ form.id }}>{{ form }}</a>
+
+{% for form in student.get_profile.forms.all %}
+    <a href=/form/{{ form.id }}>{{ form }}</a></br>
 {% endfor %}
 <a href=/index>Back to Index</a>
 </body>
