@@ -1,1 +1,26 @@
-<html><head><title>Form Detail</title></head></html>
+<html>
+<head><title>Form Detail</title></head>
+<body>
+{% if not uneditable %}
+<form name={{ form.id }} action=/submit method=post>
+{% csrf_token %}
+<input type=hidden value={{ form.id }} name=formname>
+{{ form.animal }} </br>
+{{ form.student }} </br>
+{% for formcheck in form.formchecks.all %}
+{{ formcheck }} <input type=radio name={{ formcheck }} {% if formcheck.isdone %} checked {% endif %}> </br>
+{% endfor %}
+<input type=textbox name=observation value={% if form.formobservation %}{{ form.formobservation }}{% else %}Observations {% endif %}>
+{% else %}
+{{ form.animal }}</br>
+{{ form.student }}</br>
+this form is uneditable:
+{% for formcheck in form.formchecks.all %}
+{{ formcheck }}:{{ formcheck.isdone }}
+{% endfor %}
+{{ form.observation }}
+{% endif %}
+<input type=submit value=submit> 
+</form>
+</body>
+</html>

@@ -1,6 +1,17 @@
 <html>
 <head>
-<title> student list </title>,
+<title> student list </title>
 </head>
+<body>
+Student List </br>
+{% if studentlist %}
+{% for student in studentlist %}
+<a href=/students/{{ student.id }}>{{ student }}</a> </br>
+{% endfor %}
+{% else %}
+No students listed </br>
+{% endif %}
+<a href=/index>Go Home</a>
+</body>
 </html>
 

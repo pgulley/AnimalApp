@@ -1,2 +1,27 @@
-<html><head><title>New Animal</title></head></html>
-<! this is going to be the insane javascripty new extendible form for animals. needs to make one new animal, one new formday (at time 00) and as many new formchecks as needed. hence the extencibility requirement. have fun!>  
+<html>
+<head>
+<title>New Animal</title>
+<script type="text/javascript" src="static/scripts.js">var counter=0;</script>
+</head>
+<body>
+<div id="readroot" style="display: none">
+	<input type="button" value="remove form"
+		onclick="this.parentNode.parentNode.removeChild(this.parentNode);unField();" /><br /><br />
+
+	<input id='formcheck'name="formcheck" value="form check name" />
+</div>
+<form id='newanimal' action=newanimal/submit method=post> {% csrf_token %}
+new animal
+<input type=hidden value=counter name=formnumber id=counter>
+<input value="name" name=name>
+<input value="species" name=species>
+<select name=category><option value=MA>Mammal</option><option value=AM>Amphibian</option><option value=RE>Reptile</option><option value=BI>Bird</option><option value=FI>Fish</option><option value=RO>Rodent</option><option value=IN>Invertebrate</option></select>
+<span id=writeroot></span>
+<input type=submit value=submit>
+</form>
+<button id="moreFields"type='button' onclick=newField();>Add Field</button>
+</body>
+</html>
+<! this is going to be the insane javascripty new extendible form for animals. needs to make one new animal, one new formday (at time 00) and as many new formchecks as needed. hence the extencibility requirement. have fun!> 
+
+ 

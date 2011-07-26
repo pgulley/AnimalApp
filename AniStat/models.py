@@ -16,7 +16,7 @@ class Animal(models.Model):
     name = models.CharField(max_length=20)
     category = models.CharField(max_length=2, choices=CATEGORY_CHOICES)
     instructions = models.CharField(max_length=1000)
-    caretakers = models.ManyToManyField("User", null=True, blank=True)
+    caretakers = models.ManyToManyField("Profile", null=True, blank=True)
     formlist = models.ManyToManyField("FormDay", related_name="AniStat.FormDay", null=True, blank=True)
     def __unicode__(self):
         return "{0}: {1}".format(self.get_category_display(), self.name)
@@ -34,10 +34,14 @@ class Profile(models.Model):
     def __unicode__(self):
         return self.user.username+"'s profile"
 class FormDay(models.Model):
-    day = models.DateTimeField()
+    day = models.DateField()
     formchecks = models.ManyToManyField("FormCheck")
     formobservation=models.CharField(max_length=1000, verbose_name="Observations")
-    student = models.ForeignKey(User, related_name="AniStat.Profile")
+    istemplate= models.BooleanField()
+    student = models.ForeignKey(User, related_name="AniStat.Profile", null=True)
     animal = models.ForeignKey(Animal,related_name="AniStat.Animal")
     def __unicode__(self):
-        return "Form for {0} by {1} on {2}".format(self.animal.name, self.student.username, self.day)
+        if self.student:
+            return "Form for {0} by {1} on {2}".format(self.animal.name, self.student.username, self.day)
+        else:
+            return "Template form for {0}".format(self.animal)

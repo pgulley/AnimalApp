@@ -1,1 +1,14 @@
-<html><head><title>form list</title></head></html>
+<html>
+<head><title>form list</title></head>
+<body>
+Form List </br>
+{% if formlist %}
+{% for form in formlist %}
+<a href=/forms/{{ form.id }}>{{ form }} </a> </br>
+{% endfor %}
+{% else %}
+THERE ARE NO FORMS. OHES NOES
+{% endif %}
+<a href=/index>Go Home</a>
+</body>
+</html>

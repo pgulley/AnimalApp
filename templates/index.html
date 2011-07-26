@@ -3,7 +3,16 @@
 <title> Index </title>
 </head>
 <body>
-Indexy stuff
+<h1>Indexy stuff</h1>
+<a href=animals>Animal List</a></br>
+{% if user.get_profile.isteacher %}
+<a href=students>Student List</a> </br>
+<a href=forms>Form List</a> </br>
+<a href=newanimal>New Animal</a> </br>
+{% endif %}
+{% if error %}
+{{ error }}
+{% endif %}
 </body>
 </html>
 

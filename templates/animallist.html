@@ -1,3 +1,14 @@
 <html>
 <head><title>AnimalList</title></head>
+<body>
+<h1>Animal List:</h1>
+{% if animallist %}
+{% for animal in animallist %}
+<a href=animals/{{ animal.id }}>{{ animal }}</a> <a href=animals/{{ animal.id }}/newform>Animal's Form</a>   </br>
+{% endfor %}
+{% else %}
+No Animals
+{% endif %}
+</br> <a href=index>Go back to index</a>
+</body>
 </html>

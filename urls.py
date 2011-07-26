@@ -15,7 +15,7 @@ urlpatterns = patterns('',
      url(r'^newanimal$','AniStat.views.NewAnimal'),
      url(r'^newanimal/submit$','AniStat.views.SubmitNewAnimal'),
      url(r'^animals/(?P<animal_id>\d+)/newform$','AniStat.views.NewAnimalForm'),
-
+     url(r'submit','AniStat.views.SubmitAnimalForm'),
     # Examples:
     # url(r'^$', 'AnimalApp.views.home', name='home'),
     # url(r'^AnimalApp/', include('AnimalApp.foo.urls')),

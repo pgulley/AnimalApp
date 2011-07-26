@@ -1,1 +1,14 @@
-<html><head><title>Student Detail</title></head></html>
+<html>
+<head><title>Student Detail</title></head>
+<body>
+{{ student.user.username }} </br>
+Animals: </br>
+{% for animal in student.animals %}
+<a href=/animals/{{ animal.id }}>{{ animal }}</a>
+{% endfor %}
+{% for form in student.forms %}
+<a href=/form/{{ form.id }}>{{ form }}</a>
+{% endfor %}
+<a href=/index>Back to Index</a>
+</body>
+</html>

@@ -1,1 +1,24 @@
-<html><head><title>Animal Detail</title></head></html>
+<html><head><title>Animal Detail</title></head>
+<body>
+<h1>{{ animal }} </h1>
+species: {{ animal.species }} </br>
+
+
+Most recent form: </br>
+{% if formone %}
+{% for formcheck in formone.formchecks.all %}
+{{ formcheck.name }}:{{ formcheck.isdone }}
+{% endfor %}</br>
+{% endif %}
+past forms: </br>
+{% if animal.formlist %}
+{% for form in animal.formlist.all %}
+<a href=/forms/{{ form.id }}>{{ form }}</a>  </br>
+{% endfor %}
+{% else %}
+no forms have been submitted yet 
+{% endif %}
+</br><a href=/animals>Go Back to List</a>
+</br><a href=/index>Go Back to Index</a>
+</body>
+</html>
