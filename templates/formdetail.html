@@ -1,29 +1,29 @@
 <html>
 <head>
 <title>Form Detail</title>
-<link rel=StyleSheet href=/static/css type=text/css>
+<link rel=StyleSheet href=/static/style.css type=text/css>
 </head>
 <body>
 {% if not uneditable %}
-<form name={{ form.id }} action=/submit method=post>
-{% csrf_token %}
-<input type=hidden value={{ form.id }} name=formname>
-{{ form.animal }} </br>
-{{ form.student }} </br>
-{% for formcheck in form.formchecks.all %}
-{{ formcheck }} <input type=radio name={{ formcheck }} {% if formcheck.isdone %} checked {% endif %}> </br>
-{% endfor %}
-<input type=textbox name=observation value={% if form.formobservation %}{{ form.formobservation }}{% else %}Observations {% endif %}>
+    <form name={{ form.id }} action=/submit method=post>
+        {% csrf_token %}
+        <input type=hidden value={{ form.id }} name=formname>
+        {{ form.animal }} </br>
+        {{ form.student }} </br>
+        {% for formcheck in form.formchecks.all %}
+            {{ formcheck }} <input type=radio name={{ formcheck }} {% if formcheck.isdone %} checked {% endif %}> </br>
+        {% endfor %}
+        <input type=textbox name=observation value={% if form.formobservation %}{{ form.formobservation }}{% else %}Observations {% endif %}>
+        <input type=submit value=submit> 
+    </form>
 {% else %}
-{{ form.animal }}</br>
-{{ form.student }}</br>
-this form is uneditable:
-{% for formcheck in form.formchecks.all %}
-{{ formcheck }}:{{ formcheck.isdone }}
-{% endfor %}
-{{ form.observation }}
-{% endif %}
-<input type=submit value=submit> 
-</form>
+    {{ form.animal }}</br>
+    {{ form.student }}</br>
+    this form is uneditable:
+        {% for formcheck in form.formchecks.all %}
+            {{ formcheck }}:{{ formcheck.isdone }}
+        {% endfor %}
+        {{ form.observation }}
+    {% endif %}
 </body>
 </html>

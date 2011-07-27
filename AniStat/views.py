@@ -190,7 +190,7 @@ def SubmitNewAnimal(request):#Where most of the magic of this app occurs: all of
     for formcheck in formchecklist:
         form.formchecks.add(formcheck)
     form.save()
-    return AnimalDetail(request,animal.pk)
+    return Index(request)
 
 ##Auth pages
 
