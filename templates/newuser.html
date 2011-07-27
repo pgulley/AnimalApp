@@ -1,0 +1,18 @@
+<html5>
+<head>
+<title>New User</title>
+<link ref=StyleSheet href=/static/css type=text/css>
+</head>
+<body>
+<h2>Creating a new User account</h2>
+<form name='NewUser' action='/createuser' method='post'>
+{% csrf_token %}
+Username: 
+<input type=text name='username' value='username'></br>Email: <input type=text value='email' name='email'></br>
+Password:<input type=password name='password' value='password'> </br>
+</br> <input type=submit value='Submit'></br></br>
+You will be redirected back to the index, where you will have to then log-in. 
+</br> Or: <a href='/index'>Go Home</a>
+</div>
+</body>
+</html5>
