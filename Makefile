@@ -1,6 +1,6 @@
 #!/usr/bin/make
 
-BOOTSTRAP_PYTHON=python2.6
+BOOTSTRAP_PYTHON=python2.7
 
 .PHONY: build
 build: installed collectstatic
