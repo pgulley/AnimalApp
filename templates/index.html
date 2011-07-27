@@ -14,12 +14,12 @@
 <a href=newanimal>New Animal</a> </br>
 {% endif %}
 {% else %}
-You aren't logged in.</br>
+<p>You aren't logged in.</p>
 
 <form name=login action=/login method=post>
 {% csrf_token %}
-<input type=text value=username name=username></br>
-<input type=password value=password name=password> </br>
+<input type=text value=username name=username>
+<input type=password value=password name=password> 
 <input type=submit value=submit></br>
 </form>
 or <a href=/newuser>Create an account</a></br>

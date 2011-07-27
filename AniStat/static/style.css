@@ -1,1 +1,62 @@
-/* this is an empty css file that's linked to all of the pages. fill it up!
+
+/* this is an empty css file that's linked to all of the pages. fill it up!*/
+
+
+body {
+        background-image:url()no-repeat top center;
+        background-color:#bf8030;
+        height:auto;
+        width:auto;
+        padding-top: 1px;
+        padding-bottom: .5px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-color: transparent;
+        margin-bottom:5px;
+        margin-top:5px;
+        margin-left:5px;
+        margin-right:5px;        
+        border-style:double;
+        border-width:2px;
+}
+h1 {
+        text-align:center;
+        color: #olive;
+        background-color: #ff8e00;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 36px;
+        text-shadow:4px;
+        font-style: italic;
+        height:150px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top:0px;
+        padding-bottom:0%;
+        background-image:url(); 
+}
+
+        a:link {color:#a6a500;}    /* unvisited link */
+        a:visited {color:#fffe73;} /* visited link */
+        a:hover {color:#fffd00;}   /* mouse over link */
+        a:active {color:#fffe40;}  /* selected link */
+
+
+a{
+        display:inline;
+        background-image:url();
+        color:#fff000;
+        background-color: #a66400;
+        border-width:2px;
+        border-style:solid;
+        border-style:dotted;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-bottom: 0px;
+        width:100px;
+        height:10px;
+}
+#content{
+   }
+p {
+    color:#c0c0c0;
+   } 
