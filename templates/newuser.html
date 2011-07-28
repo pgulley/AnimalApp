@@ -6,6 +6,13 @@
 <link ref=StyleSheet href="/static/style.css" type=text/css>
 </head>
 <body>
+<div class=header>
+      <h1>AS Animal Tracking </h1>
+        <div class=loginbar>
+          You are logged in as <strong>{{ user.username }}</strong> {% if user.get_profile.isteacher %} (Teacher) {% endif %}  <a class=logout href=/logout>logout</a>
+        </div>
+      </div>
+<div class=content>
 <h2>Creating a new User account</h2>
 <form name='NewUser' action='/createuser' method='post'>
 {% csrf_token %}
@@ -15,6 +22,7 @@ Password:<input type=password name='password' value='password'> </br>
 </br> <input type=submit value='Submit'></br></br>
 <p>You will be redirected back to the index, where you will have to then log-in.</p> 
 </br> Or: <a href='/index'>Go Home</a>
+</div>
 </div>
 </body>
 </html>

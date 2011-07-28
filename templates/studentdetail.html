@@ -4,6 +4,13 @@
 <link rel=StyleSheet href=static/style.css type=text/css>
 </head>
 <body>
+<div class=header>
+      <h1>AS Animal Tracking </h1>
+        <div class=loginbar>
+          You are logged in as <strong>{{ user.username }}</strong> {% if user.get_profile.isteacher %} (Teacher) {% endif %}  <a class=logout href=/logout>logout</a>
+        </div>
+      </div>
+<div class=content>
 {{ student.username }} </br>
 Animals: </br>
 {% for animal in student.get_profile.animals.all %}
@@ -14,5 +21,6 @@ Animals: </br>
     <a href=/form/{{ form.id }}>{{ form }}</a></br>
 {% endfor %}
 <a href=/index>Back to Index</a>
+</div>
 </body>
 </html>

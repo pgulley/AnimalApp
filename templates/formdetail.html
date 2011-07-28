@@ -4,6 +4,13 @@
 <link rel=StyleSheet href=/static/style.css type=text/css>
 </head>
 <body>
+<div class=header>
+      <h1>AS Animal Tracking </h1>
+        <div class=loginbar>
+          You are logged in as <strong>{{ user.username }}</strong> {% if user.get_profile.isteacher %} (Teacher) {% endif %}  <a class=logout href=/logout>logout</a>
+        </div>
+      </div>
+<div class=content>
 {% if not uneditable %}
     <form name={{ form.id }} action=/submit method=post>
         {% csrf_token %}
@@ -25,5 +32,6 @@
         {% endfor %}
         {{ form.observation }}
     {% endif %}
+</div>
 </body>
 </html>

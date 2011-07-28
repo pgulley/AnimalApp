@@ -5,6 +5,13 @@
 <link rel=StyleSheet href=/static/style.css type=text/css>
 </head>
 <body>
+<div class=header>
+      <h1>AS Animal Tracking </h1>
+        <div class=loginbar>
+          You are logged in as <strong>{{ user.username }}</strong> {% if user.get_profile.isteacher %} (Teacher) {% endif %}  <a class=logout href=/logout>logout</a>
+        </div>
+      </div>
+<div class=content>
 <div id="readroot" style="display: none">
 	<input type="button" value="remove form"
 		onclick="this.parentNode.parentNode.removeChild(this.parentNode);unField();" /><br /><br />
@@ -22,6 +29,7 @@ new animal
 </form>
 <button id="moreFields"type='button' onclick=newField();>Add Field</button>
 </br><a href=/index>Go Home</a>
+</div>
 </body>
 </html>
 <! this is going to be the insane javascripty new extendible form for animals. needs to make one new animal, one new formday (at time 00) and as many new formchecks as needed. hence the extencibility requirement. have fun!> 
