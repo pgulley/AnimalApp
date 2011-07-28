@@ -8,7 +8,7 @@
       <h1>AS Animal Tracking </h1>
       {% if user.is_authenticated %}
         <div class=loginbar> 
-          You are logged in as {{ user.username }}  <a class=logout href=/logout>logout</a> 
+          You are logged in as <strong>{{ user.username }}</strong> {% if user.get_profile.isteacher %} (Teacher) {% endif %}  <a class=logout href=/logout>logout</a> 
         </div> 
       </div>
       <div class=content>
@@ -16,23 +16,25 @@
         <a href=/animals>Animal List</a> | <a href=/forms>Form List</a>  </br>
         {% if user.get_profile.isteacher %}
           </br>
-          <a href=/students>Student List</a> | <a href=/newanimal>New Animal</a> </br>
+          <div class=teacherbar >
+           <a href=/students>Student List</a> | <a href=/newanimal>New Animal</a> 
+          </div>
         {% endif %}
       {% else %}
         <div class=loginbar>
-          You aren't logged in. 
+          You aren't logged in. <a class=logout  href=/newuser>New User</a></br>
         </div>
         </div>
-        <form name=login action=/login method=post>
+        <div class=content> 
+        <form class=login name=login action=/login method=post>
           {% csrf_token %}
           <input type=text value=username name=username>
           <input type=password value=password name=password> 
-          <input type=submit value=submit></br>
+          <input type=submit value=Login>
         </form>
-        or <a href=/newuser>Create an account</a></br>
-      {% endif %}
-      {% if error %}
-        {{ error }}
+        {% if error %}
+         <div class=logouterror> {{ error }} </div>
+        {% endif %}
       {% endif %}
   </body>
 </html>
