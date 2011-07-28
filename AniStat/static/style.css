@@ -8,7 +8,7 @@ body {
         height:auto;
         width:auto;
         padding-top: 1px;
-        padding-bottom: .5px;
+        padding-bottom: 10px;
         padding-left: 20px;
         padding-right: 20px;
         margin-color: transparent;
@@ -27,12 +27,15 @@ h1 {
         font-size: 36px;
         text-shadow:4px;
         font-style: italic;
-        height:150px;
+        height:50px;
         padding-left: 0px;
         padding-right: 0px;
         padding-top:0px;
-        padding-bottom:0%;
+        padding-bottom:0px;
         background-image:url(); 
+}
+h2 {   
+        text-align:center;
 }
 
         a:link {color:#a6a500;}    /* unvisited link */
@@ -55,8 +58,22 @@ a{
         width:100px;
         height:10px;
 }
+a.logout{
+        border-style:solid;
+        float:right;
+        height:20px;
+}
 #content{
    }
+div.loginbar{
+        color:#c0c0c0;
+        border:2px solid black;
+        height:25px;
+}
+div.header{
+        border:2px solid black;
+        padding:0px;
+}
 p {
     color:#c0c0c0;
    } 
